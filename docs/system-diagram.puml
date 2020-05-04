@@ -1,0 +1,29 @@
+@startumlt system-diagram
+!define GCP_COLOR #4285f4
+
+' @see https://github.com/arx-8/plantuml-gcp-icons
+!includeurl https://raw.githubusercontent.com/arx-8/plantuml-gcp-icons/master/GCP%20Icons/Products%20&%20Services/Compute/Cloud%20Functions.puml
+
+' @see https://github.com/Roemer/plantuml-office/tree/1.0.0
+!includeurl https://raw.githubusercontent.com/Roemer/plantuml-office/1.0.0/office2014/Clouds/cloud.puml
+!includeurl https://raw.githubusercontent.com/Roemer/plantuml-office/1.0.0/office2014/Concepts/clock.puml
+
+' @see https://github.com/tupadr3/plantuml-icon-font-sprites/tree/v2.1.0
+!includeurl https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.1.0/common.puml
+!includeurl https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.1.0/font-awesome-5/server.puml
+!includeurl https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.1.0/font-awesome-5/slack.puml
+
+OFF_CLOUD(gcp, "GCP") {
+    OFF_CLOCK(gcp_scheduler, "Cloud Scheduler")
+    GCP_CloudFunctions(gcp_fn, "Cloud Functions")
+}
+
+FA5_SERVER(investment_api, "Investment API")
+
+FA5_SLACK(slack, "Slack")
+
+gcp_scheduler --> gcp_fn
+gcp_fn <--> investment_api
+gcp_fn --> slack
+
+@enduml
